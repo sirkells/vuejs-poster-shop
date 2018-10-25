@@ -30,10 +30,11 @@ new Vue({
             }
         },
         onSubmit: function() {
-            this.items = [];
-            this.loading = true
-            this.$http.get('/search/'.concat(this.search))
-            .then(function(res) {
+            if (this.search.length) {
+                this.items = [];
+                this.loading = true
+                this.$http.get('/search/'.concat(this.search))
+                .then(function(res) {
                 this.results = res.data;
                 this.appendItems()
                 //this.items = res.data.slice(0, LOAD_NUM);
@@ -41,6 +42,8 @@ new Vue({
                 this.loading = false
                 
             });
+            }
+            
            
         },
         addItem: function(index) {
