@@ -17,6 +17,11 @@ new Vue({
         results: []
 
     },
+    computed: {
+        noMoreItems: function() {
+            return this.items.length === this.results.length && this.items.length > 0
+        }
+    },
     methods: {
         appendItems: function() {
             if (this.items.length < this.results.length) {
